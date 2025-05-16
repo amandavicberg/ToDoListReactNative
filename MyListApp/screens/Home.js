@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, SafeAreaView } from "react-native";
 import HomeStyles from "../styles/HomeStyles";
+import CustomInput from "../components/CustomInput";
 
 export default function Home() {
   const [task, setTask] = useState(""); // tarefa nova
@@ -17,17 +18,18 @@ export default function Home() {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1}}>
       <View style={HomeStyles.container}>
         <Text style={HomeStyles.title}>Lista de tarefas</Text>
 
-        <TextInput
+        <CustomInput
+          style={HomeStyles.input}
           placeholder="Nova tarefa"
           value={task}
           onChangeText={setTask}
         />
 
-        <Button style={HomeStyles.button} title="Adicionar" onPress={addTask} />
+        <Button title="Adicionar" onPress={addTask} />
       </View>
     </SafeAreaView>
   );
