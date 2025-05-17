@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import HomeStyles from "../styles/HomeStyles";
 import CustomInput from "../components/CustomInput";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Home() {
   const [task, setTask] = useState(""); // tarefa nova
@@ -18,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={HomeStyles.container}>
         <Text style={HomeStyles.title}>Lista de tarefas</Text>
 
@@ -29,7 +37,16 @@ export default function Home() {
           onChangeText={setTask}
         />
 
-        <Button title="Adicionar" onPress={addTask} />
+        <View>
+          <TouchableOpacity
+            style={HomeStyles.button}
+            title="Adicionar"
+            onPress={addTask}
+            activeOpacity={0.8}
+          >
+            <Text style={HomeStyles.buttonText}>Adicionar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
