@@ -6,6 +6,7 @@ import {
   Button,
   SafeAreaView,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import HomeStyles from "../styles/HomeStyles";
 import CustomInput from "../components/CustomInput";
@@ -46,6 +47,30 @@ export default function Home() {
           >
             <Text style={HomeStyles.buttonText}>Adicionar</Text>
           </TouchableOpacity>
+
+          <FlatList
+            data={tasks}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View style={HomeStyles.taskItem}>
+                <Text style={HomeStyles.taskText}>{item.title}</Text>
+              </View>
+            )}
+            ListEmptyComponent={
+              <View style={HomeStyles.emptyContainer}>
+                <Ionicons
+                  name="document-text-outline"
+                  style={HomeStyles.emptyIcon}
+                />
+                <Text style={HomeStyles.emptyText}>
+                  Nenhuma tarefa adicionada
+                </Text>
+                <Text style={HomeStyles.emptySubText}>
+                  Adicione algo para começar!
+                </Text>
+              </View>
+            }
+          ></FlatList>
         </View>
       </View>
     </SafeAreaView>
